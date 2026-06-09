@@ -1,0 +1,815 @@
+/* ==========================================================================
+   1. 基础重置与全局变量（米白/温暖色调）
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #faf7f2; /* 极其温柔的浅米色底 */
+    color: #3e4444;           /* 深灰蓝色文字，避免纯黑的冷冰冰 */
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. 顶部固定导航栏（Navigation Bar）
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;             /* 固定的导航栏高度 */
+    background-color: rgba(255, 255, 255, 0.95); /* 纯白带有一点点透明度，高级感 */
+    box-shadow: 0 2px 10px rgba(160, 150, 140, 0.1); /* 温暖调的微弱阴影 */
+    z-index: 1000;            /* 确保永远在最上层 */
+    display: block;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 20px;
+    display: table;           /* 使用 table 布局确保完美兼容性，防碎 */
+    width: 100%;
+}
+
+/* 导航栏左中右三块的排版 */
+.nav-logo, .nav-menu, .nav-actions {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* 左侧 Logo 样式 */
+.nav-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #4a6b6c;           /* 医疗感的低饱和度青黛绿 */
+    text-decoration: none;
+    width: 25%;
+}
+
+.logo-icon {
+    margin-right: 5px;
+}
+
+/* 中间菜单样式 */
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 50%;
+}
+
+.nav-menu li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #6b7575;
+    font-size: 15px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #4a6b6c;           /* 悬浮时变深 */
+}
+
+/* 右侧 WhatsApp 按钮样式 */
+.nav-actions {
+    text-align: right;
+    width: 25%;
+}
+
+.whatsapp-btn {
+    display: inline-block;
+    background-color: #25D366; /* WhatsApp 官方绿 */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 50px;       /* 圆角胶囊形状 */
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    background-color: #20ba59;
+    transform: translateY(-1px); /* 轻微悬浮反馈 */
+}
+
+.whatsapp-icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+    margin-top: -2px;
+}
+
+/* ==========================================================================
+   3. 页面内容及各板块布局
+   ========================================================================== */
+/* 防止内容被固定的导航栏遮挡，增加 70px 的顶距 */
+.content-wrapper {
+    padding-top: 70px;
+}
+
+/* 首页大 Banner */
+.hero-section {
+    background-color: #f4eee3; /* 温暖、干净的米色背景 */
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 1px solid #eae2d5;
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 32px;
+    color: #2c3e40;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 16px;
+    color: #707a7a;
+    margin-bottom: 30px;
+}
+
+.hero-cta-btn {
+    display: inline-block;
+    background-color: #4a6b6c;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.hero-cta-btn:hover {
+    background-color: #3b5556;
+}
+
+/* 普通科普/环境板块 */
+.info-section {
+    padding: 60px 20px;
+    background-color: #ffffff; /* 纯白相间，让页面有呼吸感 */
+}
+
+/* 交替板块背景色（米白交替） */
+.info-section.alt-bg {
+    background-color: #faf7f2;
+}
+
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-section h2 {
+    font-size: 22px;
+    color: #2c3e40;
+    border-left: 4px solid #4a6b6c; /* 侧边精致的小强调条，代替粗鲁的下划线 */
+    padding-left: 12px;
+    margin-bottom: 30px;
+}
+
+.info-section h3,h4,h5 {
+    color: #2c3e40;
+    text-align: justify;
+}
+
+.info-section p,li {
+    text-align: justify;
+    margin: auto;
+}
+
+.info-section img{
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin: 32px auto 0;
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(74, 107, 108, 0.18);
+    border: 1px solid #eee5d8;
+}
+
+#environment p {
+    text-align: center;
+}
+
+#environment .grid-placeholder {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+#environment img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    margin: 0;
+    border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(74, 107, 108, 0.16);
+}
+
+#environment .img-text {
+    grid-column: 1 / -1;
+    max-width: 760px;
+    margin: 8px auto 0;
+    justify-self: center;
+    text-align: center;
+}
+
+#environment .img-text p {
+    text-align: center;
+}
+
+.symptoms {
+    text-align: center;
+    margin-top: 3px;
+    line-height: 1.45;
+    color: #707a7a;
+}
+
+/* 占位框样式 */
+.grid-placeholder {
+    background: #ffffff;
+    border: 1px dashed #dcd5ca;
+    padding: 60px;
+    text-align: center;
+    color: #9a9e9e;
+    border-radius: 8px;
+}
+
+.piles-class {
+    color: #3e4444;
+    text-align: left;
+}
+
+.piles-class h3 {
+    margin: 0 0 24px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.piles-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.piles-card {
+    background: #faf7f2;
+    border: 1px solid #e8dfd2;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 10px 22px rgba(74, 107, 108, 0.08);
+}
+
+.piles-card h4 {
+    margin: 0 0 10px;
+    color: #4a6b6c;
+    font-size: 17px;
+    text-align: left;
+}
+
+.piles-card .symptom-title {
+    margin: 0 0 14px;
+    color: #707a7a;
+    font-weight: 700;
+    text-align: left;
+}
+
+.piles-card ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.piles-card li {
+    margin-bottom: 14px;
+    color: #3e4444;
+}
+
+.piles-card .en-placeholder {
+    display: block;
+    margin-top: 3px;
+    line-height: 1.45;
+    color: #707a7a;
+}
+
+.piles-note {
+    margin-top: 14px !important;
+    color: #9b5f5f;
+    font-size: 14px;
+    text-align: left !important;
+}
+
+.piles-note-en {
+    color: #b68b8b;
+    text-align: left !important;
+}
+
+.treatment-panel {
+    background: #ffffff;
+    border: 1px solid #e6ded1;
+    border-radius: 8px;
+    padding: 36px;
+    color: #3e4444;
+    box-shadow: 0 14px 30px rgba(74, 107, 108, 0.08);
+}
+
+.treatment-hero {
+    background: #f4eee3;
+    border-left: 5px solid #4a6b6c;
+    border-radius: 8px;
+    padding: 28px;
+    margin-bottom: 24px;
+}
+
+.treatment-kicker {
+    display: block;
+    color: #8a7562;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.treatment-hero h3,
+.treatment-heading h3 {
+    margin: 0;
+    color: #2c3e40;
+    text-align: left;
+}
+
+.treatment-hero h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.treatment-hero p {
+    max-width: 860px;
+    margin: 0 0 8px;
+    text-align: left;
+}
+
+.treatment-principles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.principle-card,
+.treatment-card {
+    border: 1px solid #e8dfd2;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.principle-card {
+    padding: 22px;
+}
+
+.principle-card i {
+    color: #4a6b6c;
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.principle-card h4,
+.treatment-card h4 {
+    margin: 0 0 8px;
+    color: #2c3e40;
+    text-align: left;
+}
+
+.principle-card p,
+.treatment-card p {
+    margin: 0 0 8px;
+    text-align: left;
+}
+
+.treatment-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #e8dfd2;
+    padding-bottom: 12px;
+}
+
+.treatment-heading span {
+    color: #8fa0a1;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.treatment-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.treatment-card {
+    padding: 24px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.treatment-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(74, 107, 108, 0.12);
+}
+
+.treatment-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: #eaf3f1;
+    color: #4a6b6c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.treatment-en-title {
+    display: block;
+    color: #8fa0a1;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+/* ==========================================================================
+   4. 移动端响应式优化
+   ========================================================================== */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* 移动端暂时隐藏中间菜单，或后续您可以用JS做汉堡菜单 */
+    }
+    .nav-logo {
+        width: 50%;
+    }
+    .nav-actions {
+        width: 50%;
+    }
+    .hero-content h1 {
+        font-size: 24px;
+    }
+    .whatsapp-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    #environment .grid-placeholder {
+        grid-template-columns: 1fr;
+        padding: 24px;
+    }
+    #environment img {
+        height: 240px;
+    }
+    .grid-placeholder {
+        padding: 28px;
+    }
+    .piles-card-grid {
+        grid-template-columns: 1fr;
+    }
+    .piles-card {
+        padding: 20px;
+    }
+    .treatment-panel {
+        padding: 22px;
+    }
+    .treatment-hero {
+        padding: 22px;
+    }
+    .treatment-hero h3 {
+        font-size: 21px;
+    }
+    .treatment-principles,
+    .treatment-card-grid {
+        grid-template-columns: 1fr;
+    }
+    .treatment-heading {
+        display: block;
+    }
+    .treatment-heading span {
+        display: block;
+        margin-top: 4px;
+    }
+}
+
+/* ==========================================================================
+   5. 中英双语排版微调
+   ========================================================================== */
+
+/* 导航栏高度由于双语稍微加高到 80px，保证呼吸感 */
+.navbar {
+    height: 80px; 
+}
+.content-wrapper {
+    padding-top: 80px; /* 同步调整正文顶距 */
+}
+
+/* Logo 英文微调 */
+.logo-text {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.2;
+}
+.logo-text .en-sub {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: #8da4a5; /* 比中文更淡的颜色 */
+    letter-spacing: 0.5px;
+}
+
+/* 导航菜单英文微调 */
+.nav-menu a {
+    display: inline-block;
+    line-height: 1.3;
+}
+.en-menu {
+    display: block; /* 强制英文换行到第二行 */
+    font-size: 11px;
+    color: #9da5a5;
+    font-weight: 400;
+    text-transform: uppercase; /* 英文自动大写，显得更加精致规整 */
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
+.nav-menu a:hover .en-menu {
+    color: #4a6b6c; /* 鼠标悬浮时英文同步变色 */
+}
+
+/* WhatsApp 按钮内的双层文字 */
+.btn-text-wrapper {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    line-height: 1.2;
+}
+.btn-main-text {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+}
+.btn-sub-text {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+/* 各板块大标题的中英双层样式 */
+.section-title {
+    line-height: 1.4 !important;
+}
+.section-en-title {
+    display: block;
+    font-size: 14px;
+    color: #8fa0a1;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+/* 首页 Banner 区的中英文字细化 */
+.hero-en-title {
+    font-size: 20px !important;
+    color: #4a6b6c;
+    font-weight: 500;
+    margin-top: -10px;
+    margin-bottom: 20px;
+}
+.hero-en-p {
+    font-size: 14px !important;
+    color: #8da2a3;
+    margin-top: -20px;
+    margin-bottom: 35px;
+}
+.cta-en-text {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 2px;
+}
+
+/* 占位符英文 */
+.en-placeholder {
+    font-size: 14px;
+    color: #b9bcbc;
+    margin-top: 5px;
+}
+
+/* ==========================================================================
+   6. 页面底部页脚（Footer Styles）
+   ========================================================================== */
+.site-footer {
+    background-color: #f0e9dd; /* 稍微深一点的温暖奶茶底色，压得住阵 */
+    color: #4a5050;
+    padding: 60px 0 0 0;       /* 底部留给版权栏，所以padding-bottom为0 */
+    font-size: 14px;
+    border-top: 1px solid #e4dac9;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: table;            /* 使用table排版确保多列并排的稳固性 */
+    width: 100%;
+}
+
+.footer-column {
+    display: table-cell;
+    width: 25%;                /* 均分四列 */
+    padding-right: 30px;
+    vertical-align: top;
+}
+
+/* 第一列品牌特殊处理 */
+.brand-col .footer-logo {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c3e40;
+    margin: 0 0 2px 0;
+}
+.brand-col .footer-en-sub {
+    display: block;
+    font-size: 11px;
+    color: #8da4a5;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+.footer-desc {
+    margin: 0 0 5px 0;
+    font-size: 13px;
+    color: #5c6363;
+}
+.footer-desc-en {
+    margin: 0;
+    font-size: 12px;
+    color: #8da2a3;
+    line-height: 1.4;
+}
+
+/* 栏目大标题样式 */
+.footer-column h4 {
+    font-size: 15px;
+    color: #2c3e40;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.footer-title-en {
+    display: block;
+    font-size: 11px;
+    color: #8da4a5;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* 营业时间与联系方式列表重置 */
+.footer-hours, .footer-contact {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-hours li {
+    margin-bottom: 12px;
+    font-size: 13px;
+    border-bottom: 1px dashed #e4dac9;
+    padding-bottom: 6px;
+}
+.footer-hours span {
+    display: block;
+    font-weight: 600;
+    color: #3b5556;
+}
+.closed-tag {
+    color: #c97a7a !important; /* 休息时间用温和的淡红色标记 */
+}
+
+/* 联系方式排版 */
+.footer-contact li {
+    display: table;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.footer-contact .icon {
+    display: table-cell;
+    width: 24px;
+    font-size: 16px;
+    vertical-align: top;
+}
+.footer-contact .text {
+    display: table-cell;
+    vertical-align: top;
+    line-height: 1.4;
+}
+.footer-contact .en-text {
+    font-size: 12px;
+    color: #8da2a3;
+}
+
+/* 社交媒体区域 */
+.social-tip {
+    font-size: 13px;
+    color: #707a7a;
+    margin-bottom: 15px;
+}
+.social-links {
+    display: block;
+}
+.social-icon-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #ffffff;
+    color: #4a6b6c;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #eae2d5;
+    transition: all 0.2s ease;
+}
+.social-icon-btn:hover {
+    background-color: #4a6b6c;
+    color: #ffffff;
+    border-color: #4a6b6c;
+}
+.whatsapp-link:hover {
+    background-color: #25D366; /* 悬浮在WhatsApp上时显示绿色 */
+    border-color: #25D366;
+}
+
+/* 最底部的版权声明栏 */
+.footer-bottom {
+    background-color: #e6dec1; /* 比页脚更深一点的底色，形成分层 */
+    margin-top: 40px;
+    padding: 20px 0;
+    font-size: 12px;
+    color: #707575;
+}
+.footer-bottom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+.footer-bottom p {
+    margin: 4px 0;
+}
+.icp-info {
+    color: #909595;
+}
+
+.fa-solid {
+    margin-right: 10px;
+}
+
+/* ==========================================================================
+   7. 页脚移动端响应式处理
+   ========================================================================== */
+@media (max-width: 768px) {
+    .footer-container {
+        display: block; /* 手机端取消table布局，改为区块上下堆叠 */
+    }
+    .footer-column {
+        display: block;
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 35px; /* 每一块之间留出间距 */
+    }
+    .site-footer {
+        padding-top: 40px;
+    }
+}
